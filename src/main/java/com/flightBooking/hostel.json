@@ -1,0 +1,74 @@
+{
+
+"hostel": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "name": {
+
+     "name" : "name",
+     "required" : "true",
+     "type" : "String"
+     },
+    "bed": {
+
+     "name" : "bed",
+     "required" : "true",
+     "type" : "String"
+     },
+    "totalrooms": {
+
+     "name" : "totalrooms",
+     "required" : "true",
+     "type" : "String"
+     },
+    "occupied": {
+
+     "name" : "occupied",
+     "required" : "true",
+     "type" : "String"
+     },
+    "floors": {
+
+     "name" : "floors",
+     "required" : "false",
+     "type" : "String"
+     },
+    "residents": {
+
+     "name" : "residents",
+     "required" : "true",
+     "type" : "String"
+     },
+    "inhostel": {
+
+     "name" : "inhostel",
+     "required" : "true",
+     "type" : "String"
+     },
+    "outhostel": {
+
+     "name" : "outhostel",
+     "required" : "true",
+     "type" : "String"
+     },
+    "percentoccupancy": {
+
+     "name" : "percentoccupancy",
+     "required" : "false",
+     "type" : "String"
+     }
+   
+  }
+ }
+
+}
+

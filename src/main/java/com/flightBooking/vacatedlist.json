@@ -1,0 +1,149 @@
+{
+
+"vacatedlist": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "dateofvacation": {
+
+     "name" : "dateofvacation",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "newroomnumber": {
+
+     "name" : "newroomnumber",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "oldroomnumber": {
+
+     "name" : "oldroomnumber",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "isshift": {
+
+     "name" : "isshift",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "Boolean"
+     },
+    "remarkscheckout": {
+
+     "name" : "remarkscheckout",
+     "required" : "false",
+     "type" : "String"
+     },
+    "block": {
+
+     "name" : "block",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Room" 
+      },
+     "type" : "String"
+     },
+    "roomtype": {
+
+     "name" : "roomtype",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Room" 
+      },
+     "type" : "String"
+     },
+    "roomnumber": {
+
+     "name" : "roomnumber",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "rollnumber": {
+
+     "name" : "rollnumber",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "name": {
+
+     "name" : "name",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "degree": {
+
+     "name" : "degree",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "email": {
+
+     "name" : "email",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "mobile": {
+
+     "name" : "mobile",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "Long"
+     },
+    "checkindate": {
+
+     "name" : "checkindate",
+     "required" : "false",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
+     "type" : "String"
+     },
+    "remarkcheckin": {
+
+     "name" : "remarkcheckin",
+     "required" : "false",
+     "type" : "String"
+     }
+   
+  }
+ }
+
+}
+

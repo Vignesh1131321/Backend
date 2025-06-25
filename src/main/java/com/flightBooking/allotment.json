@@ -1,0 +1,110 @@
+{
+
+"allotment": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "studentname": {
+
+     "name" : "studentname",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
+     },
+    "degree": {
+
+     "name" : "degree",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
+     },
+    "email": {
+
+     "name" : "email",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
+     },
+    "mobile": {
+
+     "name" : "mobile",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "Long"
+     },
+    "rollnumber": {
+
+     "name" : "rollnumber",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
+     },
+    "roomnumber": {
+
+     "name" : "roomnumber",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Room" 
+      },
+     "type" : "String"
+     },
+    "checkindnt": {
+
+     "name" : "checkindnt",
+     "required" : "true",
+     "type" : "String"
+     },
+    "checkoutdnt": {
+
+     "name" : "checkoutdnt",
+     "required" : "false",
+     "type" : "String"
+     },
+    "remarks": {
+
+     "name" : "remarks",
+     "required" : "false",
+     "type" : "String"
+     },
+    "newroomnumber": {
+
+     "name" : "newroomnumber",
+     "required" : "false",
+     "type" : "String"
+     },
+    "oldroomnumber": {
+
+     "name" : "oldroomnumber",
+     "required" : "false",
+     "type" : "String"
+     },
+    "isshift": {
+
+     "name" : "isshift",
+     "required" : "false",
+     "type" : "Boolean"
+     }
+   
+  }
+ }
+
+}
+

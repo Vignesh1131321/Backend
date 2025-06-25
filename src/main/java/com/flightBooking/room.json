@@ -1,0 +1,46 @@
+{
+
+"room": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "roomnumber": {
+
+     "name" : "roomnumber",
+     "required" : "true",
+     "type" : "String"
+     },
+    "floor": {
+
+     "name" : "floor",
+     "required" : "true",
+     "type" : "Long"
+     },
+    "block": {
+
+     "name" : "block",
+     "required" : "true",
+     "type" : "String"
+     },
+    "roomtype": {
+
+     "name" : "roomtype",
+     "required" : "false",
+     "is_enum" : "true",
+      "possible_value" :"Roomtype", 
+     "type" : "String"
+     }
+   
+  }
+ }
+
+}
+

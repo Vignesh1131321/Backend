@@ -1,0 +1,56 @@
+{
+
+"resident": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "rollnumber": {
+
+     "name" : "rollnumber",
+     "required" : "true",
+     "type" : "String"
+     },
+    "name": {
+
+     "name" : "name",
+     "required" : "true",
+     "type" : "String"
+     },
+    "degree": {
+
+     "name" : "degree",
+     "required" : "true",
+     "type" : "String"
+     },
+    "email": {
+
+     "name" : "email",
+     "required" : "true",
+     "type" : "String"
+     },
+    "mobile": {
+
+     "name" : "mobile",
+     "required" : "true",
+     "type" : "Long"
+     },
+    "remarks": {
+
+     "name" : "remarks",
+     "required" : "false",
+     "type" : "String"
+     }
+   
+  }
+ }
+
+}
+

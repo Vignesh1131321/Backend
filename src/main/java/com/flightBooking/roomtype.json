@@ -1,0 +1,24 @@
+{
+
+"roomtype": {
+
+  "purpose" : "POSSIBLE_VALUE",
+  "values" : {
+    "single": {
+
+     "id":"single", 
+      "name":"single" 
+   },
+    "double": {
+
+     "id":"double", 
+      "name":"double" 
+   },
+    "triple": {
+
+     "id":"triple", 
+      "name":"triple" 
+   }
+}
+}
+}
