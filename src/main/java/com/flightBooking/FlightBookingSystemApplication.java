@@ -1,8 +1,11 @@
 package com.flightBooking;
 
+import com.flightBooking.Decorator.RoomDecorator;
+import com.flightBooking.Decorator.StudentDecorator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import platform.decorator.DecoratorManager;
 import platform.defined.account.helper.RoleHelper;
 import platform.helper.HelperManager;
 
@@ -16,7 +19,10 @@ public class FlightBookingSystemApplication {
 
 
         HelperManager.getInstance().register(RoleHelper.getInstance());
+        DecoratorManager.getInstance().register("student",new StudentDecorator());
+        DecoratorManager.getInstance().register("room",new RoomDecorator());
         SpringApplication.run(FlightBookingSystemApplication.class, args);
+
 
     }
 

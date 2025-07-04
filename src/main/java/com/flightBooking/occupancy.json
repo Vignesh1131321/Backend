@@ -57,15 +57,6 @@
       },
      "type" : "String"
      },
-    "name": {
-
-     "name" : "name",
-     "required" : "true",
-     "foreign" : {
-      "resource" :"Allotment" 
-      },
-     "type" : "String"
-     },
     "degree": {
 
      "name" : "degree",
@@ -106,6 +97,15 @@
 
      "name" : "remarks",
      "required" : "false",
+     "type" : "String"
+     },
+    "studentname": {
+
+     "name" : "studentname",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
      "type" : "String"
      }
    

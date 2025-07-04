@@ -12,12 +12,6 @@
      "required" : "true",
      "type" : "String"
      },
-    "name": {
-
-     "name" : "name",
-     "required" : "true",
-     "type" : "String"
-     },
     "bed": {
 
      "name" : "bed",
@@ -64,6 +58,12 @@
 
      "name" : "percentoccupancy",
      "required" : "false",
+     "type" : "String"
+     },
+    "hostelname": {
+
+     "name" : "hostelname",
+     "required" : "true",
      "type" : "String"
      }
    

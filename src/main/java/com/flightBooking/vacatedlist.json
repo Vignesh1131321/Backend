@@ -90,15 +90,6 @@
       },
      "type" : "String"
      },
-    "name": {
-
-     "name" : "name",
-     "required" : "true",
-     "foreign" : {
-      "resource" :"Allotment" 
-      },
-     "type" : "String"
-     },
     "degree": {
 
      "name" : "degree",
@@ -139,6 +130,15 @@
 
      "name" : "remarkcheckin",
      "required" : "false",
+     "type" : "String"
+     },
+    "studentname": {
+
+     "name" : "studentname",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Allotment" 
+      },
      "type" : "String"
      }
    

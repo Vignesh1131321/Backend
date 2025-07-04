@@ -37,7 +37,6 @@ import com.flightBooking.service.*;
 	private String g_status = null;
 	private String archived = null;
 	private Long archived_time = null;
-	private String name = null;
 	private String bed = null;
 	private String totalrooms = null;
 	private String occupied = null;
@@ -46,6 +45,7 @@ import com.flightBooking.service.*;
 	private String inhostel = null;
 	private String outhostel = null;
 	private String percentoccupancy = null;
+	private String hostelname = null;
 	private Map<String, Object> extra_data = null;
 
 	public static String FIELD_ID = "id";
@@ -59,7 +59,6 @@ import com.flightBooking.service.*;
 	public static String FIELD_G_STATUS = "g_status";
 	public static String FIELD_ARCHIVED = "archived";
 	public static String FIELD_ARCHIVED_TIME = "archived_time";
-	public static String FIELD_NAME = "name";
 	public static String FIELD_BED = "bed";
 	public static String FIELD_TOTALROOMS = "totalrooms";
 	public static String FIELD_OCCUPIED = "occupied";
@@ -68,6 +67,7 @@ import com.flightBooking.service.*;
 	public static String FIELD_INHOSTEL = "inhostel";
 	public static String FIELD_OUTHOSTEL = "outhostel";
 	public static String FIELD_PERCENTOCCUPANCY = "percentoccupancy";
+	public static String FIELD_HOSTELNAME = "hostelname";
 	public static String FIELD_EXTRA_DATA = "extra_data";
 
 	private static final long serialVersionUID = 1L;
@@ -123,10 +123,6 @@ import com.flightBooking.service.*;
 		Field archived_timeField = new Field("archived_time", "long");
 		metaData.addField(archived_timeField);
 
-		Field nameField = new Field("name", "String");
-		nameField.setRequired(true);
-		metaData.addField(nameField);
-
 		Field bedField = new Field("bed", "String");
 		bedField.setRequired(true);
 		metaData.addField(bedField);
@@ -157,6 +153,10 @@ import com.flightBooking.service.*;
 		Field percentoccupancyField = new Field("percentoccupancy", "String");
 		metaData.addField(percentoccupancyField);
 
+		Field hostelnameField = new Field("hostelname", "String");
+		hostelnameField.setRequired(true);
+		metaData.addField(hostelnameField);
+
 		Field extra_dataField = new Field("extra_data", "Map");
 		extra_dataField.setValueType("Object");
 		metaData.addField(extra_dataField);
@@ -182,7 +182,6 @@ import com.flightBooking.service.*;
 		this.g_status = obj.g_status;
 		this.archived = obj.archived;
 		this.archived_time = obj.archived_time;
-		this.name = obj.name;
 		this.bed = obj.bed;
 		this.totalrooms = obj.totalrooms;
 		this.occupied = obj.occupied;
@@ -191,6 +190,7 @@ import com.flightBooking.service.*;
 		this.inhostel = obj.inhostel;
 		this.outhostel = obj.outhostel;
 		this.percentoccupancy = obj.percentoccupancy;
+		this.hostelname = obj.hostelname;
 		this.extra_data = obj.extra_data;
 	}
 
@@ -228,8 +228,6 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
-		if(name != null)
-			map.put("name", name);
 		if(bed != null)
 			map.put("bed", bed);
 		if(totalrooms != null)
@@ -246,6 +244,8 @@ import com.flightBooking.service.*;
 			map.put("outhostel", outhostel);
 		if(percentoccupancy != null)
 			map.put("percentoccupancy", percentoccupancy);
+		if(hostelname != null)
+			map.put("hostelname", hostelname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -274,8 +274,6 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
-		if(validateName(add))
-			map.put("name", name);
 		if(validateBed(add))
 			map.put("bed", bed);
 		if(validateTotalrooms(add))
@@ -292,6 +290,8 @@ import com.flightBooking.service.*;
 			map.put("outhostel", outhostel);
 		if(percentoccupancy != null)
 			map.put("percentoccupancy", percentoccupancy);
+		if(validateHostelname(add))
+			map.put("hostelname", hostelname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -314,7 +314,6 @@ import com.flightBooking.service.*;
 		g_status = (String) map.get("g_status");
 		archived = (String) map.get("archived");
 		archived_time = (map.get("archived_time") == null ? null : ((Number) map.get("archived_time")).longValue());
-		name = (String) map.get("name");
 		bed = (String) map.get("bed");
 		totalrooms = (String) map.get("totalrooms");
 		occupied = (String) map.get("occupied");
@@ -323,6 +322,7 @@ import com.flightBooking.service.*;
 		inhostel = (String) map.get("inhostel");
 		outhostel = (String) map.get("outhostel");
 		percentoccupancy = (String) map.get("percentoccupancy");
+		hostelname = (String) map.get("hostelname");
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
 
@@ -372,10 +372,6 @@ import com.flightBooking.service.*;
 		if(archived_timeObj != null)
 			archived_time = new Long(archived_timeObj.toString());
 
-		Object nameObj = map.get("name");
-		if(nameObj != null)
-			name = nameObj.toString();
-
 		Object bedObj = map.get("bed");
 		if(bedObj != null)
 			bed = bedObj.toString();
@@ -407,6 +403,10 @@ import com.flightBooking.service.*;
 		Object percentoccupancyObj = map.get("percentoccupancy");
 		if(percentoccupancyObj != null)
 			percentoccupancy = percentoccupancyObj.toString();
+
+		Object hostelnameObj = map.get("hostelname");
+		if(hostelnameObj != null)
+			hostelname = hostelnameObj.toString();
 
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
@@ -606,28 +606,6 @@ import com.flightBooking.service.*;
 		this.archived_time = null;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getNameEx() {
-		return name != null ? name : "";
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void unSetName() {
-		this.name = null;
-	}
-
-	public boolean validateName(boolean add) throws ApplicationException {
-		if(add && name == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[name]");
-		return name != null;
-	}
-
 	public String getBed() {
 		return bed;
 	}
@@ -790,6 +768,28 @@ import com.flightBooking.service.*;
 
 	public void unSetPercentoccupancy() {
 		this.percentoccupancy = null;
+	}
+
+	public String getHostelname() {
+		return hostelname;
+	}
+
+	public String getHostelnameEx() {
+		return hostelname != null ? hostelname : "";
+	}
+
+	public void setHostelname(String hostelname) {
+		this.hostelname = hostelname;
+	}
+
+	public void unSetHostelname() {
+		this.hostelname = null;
+	}
+
+	public boolean validateHostelname(boolean add) throws ApplicationException {
+		if(add && hostelname == null)
+			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[hostelname]");
+		return hostelname != null;
 	}
 
 	public Map<String, Object> getExtra_data() {

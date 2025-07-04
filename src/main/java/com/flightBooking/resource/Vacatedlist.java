@@ -46,12 +46,12 @@ import com.flightBooking.service.*;
 	private String roomtype = null;
 	private String roomnumber = null;
 	private String rollnumber = null;
-	private String name = null;
 	private String degree = null;
 	private String email = null;
 	private Long mobile = null;
 	private String checkindate = null;
 	private String remarkcheckin = null;
+	private String studentname = null;
 	private Map<String, Object> extra_data = null;
 
 	public static String FIELD_ID = "id";
@@ -74,12 +74,12 @@ import com.flightBooking.service.*;
 	public static String FIELD_ROOMTYPE = "roomtype";
 	public static String FIELD_ROOMNUMBER = "roomnumber";
 	public static String FIELD_ROLLNUMBER = "rollnumber";
-	public static String FIELD_NAME = "name";
 	public static String FIELD_DEGREE = "degree";
 	public static String FIELD_EMAIL = "email";
 	public static String FIELD_MOBILE = "mobile";
 	public static String FIELD_CHECKINDATE = "checkindate";
 	public static String FIELD_REMARKCHECKIN = "remarkcheckin";
+	public static String FIELD_STUDENTNAME = "studentname";
 	public static String FIELD_EXTRA_DATA = "extra_data";
 
 	private static final long serialVersionUID = 1L;
@@ -175,11 +175,6 @@ import com.flightBooking.service.*;
 		rollnumberField.setForeign(new Foreign("Allotment"));
 		metaData.addField(rollnumberField);
 
-		Field nameField = new Field("name", "String");
-		nameField.setRequired(true);
-		nameField.setForeign(new Foreign("Allotment"));
-		metaData.addField(nameField);
-
 		Field degreeField = new Field("degree", "String");
 		degreeField.setRequired(true);
 		degreeField.setForeign(new Foreign("Allotment"));
@@ -199,6 +194,11 @@ import com.flightBooking.service.*;
 
 		Field remarkcheckinField = new Field("remarkcheckin", "String");
 		metaData.addField(remarkcheckinField);
+
+		Field studentnameField = new Field("studentname", "String");
+		studentnameField.setRequired(true);
+		studentnameField.setForeign(new Foreign("Allotment"));
+		metaData.addField(studentnameField);
 
 		Field extra_dataField = new Field("extra_data", "Map");
 		extra_dataField.setValueType("Object");
@@ -234,12 +234,12 @@ import com.flightBooking.service.*;
 		this.roomtype = obj.roomtype;
 		this.roomnumber = obj.roomnumber;
 		this.rollnumber = obj.rollnumber;
-		this.name = obj.name;
 		this.degree = obj.degree;
 		this.email = obj.email;
 		this.mobile = obj.mobile;
 		this.checkindate = obj.checkindate;
 		this.remarkcheckin = obj.remarkcheckin;
+		this.studentname = obj.studentname;
 		this.extra_data = obj.extra_data;
 	}
 
@@ -295,8 +295,6 @@ import com.flightBooking.service.*;
 			map.put("roomnumber", roomnumber);
 		if(rollnumber != null)
 			map.put("rollnumber", rollnumber);
-		if(name != null)
-			map.put("name", name);
 		if(degree != null)
 			map.put("degree", degree);
 		if(email != null)
@@ -307,6 +305,8 @@ import com.flightBooking.service.*;
 			map.put("checkindate", checkindate);
 		if(remarkcheckin != null)
 			map.put("remarkcheckin", remarkcheckin);
+		if(studentname != null)
+			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -353,8 +353,6 @@ import com.flightBooking.service.*;
 			map.put("roomnumber", roomnumber);
 		if(validateRollnumber(add))
 			map.put("rollnumber", rollnumber);
-		if(validateName(add))
-			map.put("name", name);
 		if(validateDegree(add))
 			map.put("degree", degree);
 		if(email != null)
@@ -365,6 +363,8 @@ import com.flightBooking.service.*;
 			map.put("checkindate", checkindate);
 		if(remarkcheckin != null)
 			map.put("remarkcheckin", remarkcheckin);
+		if(validateStudentname(add))
+			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -396,12 +396,12 @@ import com.flightBooking.service.*;
 		roomtype = (String) map.get("roomtype");
 		roomnumber = (String) map.get("roomnumber");
 		rollnumber = (String) map.get("rollnumber");
-		name = (String) map.get("name");
 		degree = (String) map.get("degree");
 		email = (String) map.get("email");
 		mobile = (map.get("mobile") == null ? null : ((Number) map.get("mobile")).longValue());
 		checkindate = (String) map.get("checkindate");
 		remarkcheckin = (String) map.get("remarkcheckin");
+		studentname = (String) map.get("studentname");
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
 
@@ -487,10 +487,6 @@ import com.flightBooking.service.*;
 		if(rollnumberObj != null)
 			rollnumber = rollnumberObj.toString();
 
-		Object nameObj = map.get("name");
-		if(nameObj != null)
-			name = nameObj.toString();
-
 		Object degreeObj = map.get("degree");
 		if(degreeObj != null)
 			degree = degreeObj.toString();
@@ -510,6 +506,10 @@ import com.flightBooking.service.*;
 		Object remarkcheckinObj = map.get("remarkcheckin");
 		if(remarkcheckinObj != null)
 			remarkcheckin = remarkcheckinObj.toString();
+
+		Object studentnameObj = map.get("studentname");
+		if(studentnameObj != null)
+			studentname = studentnameObj.toString();
 
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
@@ -879,28 +879,6 @@ import com.flightBooking.service.*;
 		return rollnumber != null;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getNameEx() {
-		return name != null ? name : "";
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void unSetName() {
-		this.name = null;
-	}
-
-	public boolean validateName(boolean add) throws ApplicationException {
-		if(add && name == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[name]");
-		return name != null;
-	}
-
 	public String getDegree() {
 		return degree;
 	}
@@ -981,6 +959,28 @@ import com.flightBooking.service.*;
 
 	public void unSetRemarkcheckin() {
 		this.remarkcheckin = null;
+	}
+
+	public String getStudentname() {
+		return studentname;
+	}
+
+	public String getStudentnameEx() {
+		return studentname != null ? studentname : "";
+	}
+
+	public void setStudentname(String studentname) {
+		this.studentname = studentname;
+	}
+
+	public void unSetStudentname() {
+		this.studentname = null;
+	}
+
+	public boolean validateStudentname(boolean add) throws ApplicationException {
+		if(add && studentname == null)
+			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[studentname]");
+		return studentname != null;
 	}
 
 	public Map<String, Object> getExtra_data() {

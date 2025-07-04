@@ -38,11 +38,11 @@ import com.flightBooking.service.*;
 	private String archived = null;
 	private Long archived_time = null;
 	private String rollnumber = null;
-	private String name = null;
 	private String degree = null;
 	private String email = null;
 	private Long mobile = null;
 	private String remarks = null;
+	private String username = null;
 	private Map<String, Object> extra_data = null;
 
 	public static String FIELD_ID = "id";
@@ -57,11 +57,11 @@ import com.flightBooking.service.*;
 	public static String FIELD_ARCHIVED = "archived";
 	public static String FIELD_ARCHIVED_TIME = "archived_time";
 	public static String FIELD_ROLLNUMBER = "rollnumber";
-	public static String FIELD_NAME = "name";
 	public static String FIELD_DEGREE = "degree";
 	public static String FIELD_EMAIL = "email";
 	public static String FIELD_MOBILE = "mobile";
 	public static String FIELD_REMARKS = "remarks";
+	public static String FIELD_USERNAME = "username";
 	public static String FIELD_EXTRA_DATA = "extra_data";
 
 	private static final long serialVersionUID = 1L;
@@ -121,10 +121,6 @@ import com.flightBooking.service.*;
 		rollnumberField.setRequired(true);
 		metaData.addField(rollnumberField);
 
-		Field nameField = new Field("name", "String");
-		nameField.setRequired(true);
-		metaData.addField(nameField);
-
 		Field degreeField = new Field("degree", "String");
 		degreeField.setRequired(true);
 		metaData.addField(degreeField);
@@ -139,6 +135,10 @@ import com.flightBooking.service.*;
 
 		Field remarksField = new Field("remarks", "String");
 		metaData.addField(remarksField);
+
+		Field usernameField = new Field("username", "String");
+		usernameField.setRequired(true);
+		metaData.addField(usernameField);
 
 		Field extra_dataField = new Field("extra_data", "Map");
 		extra_dataField.setValueType("Object");
@@ -166,11 +166,11 @@ import com.flightBooking.service.*;
 		this.archived = obj.archived;
 		this.archived_time = obj.archived_time;
 		this.rollnumber = obj.rollnumber;
-		this.name = obj.name;
 		this.degree = obj.degree;
 		this.email = obj.email;
 		this.mobile = obj.mobile;
 		this.remarks = obj.remarks;
+		this.username = obj.username;
 		this.extra_data = obj.extra_data;
 	}
 
@@ -210,8 +210,6 @@ import com.flightBooking.service.*;
 			map.put("archived_time", archived_time);
 		if(rollnumber != null)
 			map.put("rollnumber", rollnumber);
-		if(name != null)
-			map.put("name", name);
 		if(degree != null)
 			map.put("degree", degree);
 		if(email != null)
@@ -220,6 +218,8 @@ import com.flightBooking.service.*;
 			map.put("mobile", mobile);
 		if(remarks != null)
 			map.put("remarks", remarks);
+		if(username != null)
+			map.put("username", username);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -250,8 +250,6 @@ import com.flightBooking.service.*;
 			map.put("archived_time", archived_time);
 		if(validateRollnumber(add))
 			map.put("rollnumber", rollnumber);
-		if(validateName(add))
-			map.put("name", name);
 		if(validateDegree(add))
 			map.put("degree", degree);
 		if(validateEmail(add))
@@ -260,6 +258,8 @@ import com.flightBooking.service.*;
 			map.put("mobile", mobile);
 		if(remarks != null)
 			map.put("remarks", remarks);
+		if(validateUsername(add))
+			map.put("username", username);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -283,11 +283,11 @@ import com.flightBooking.service.*;
 		archived = (String) map.get("archived");
 		archived_time = (map.get("archived_time") == null ? null : ((Number) map.get("archived_time")).longValue());
 		rollnumber = (String) map.get("rollnumber");
-		name = (String) map.get("name");
 		degree = (String) map.get("degree");
 		email = (String) map.get("email");
 		mobile = (map.get("mobile") == null ? null : ((Number) map.get("mobile")).longValue());
 		remarks = (String) map.get("remarks");
+		username = (String) map.get("username");
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
 
@@ -341,10 +341,6 @@ import com.flightBooking.service.*;
 		if(rollnumberObj != null)
 			rollnumber = rollnumberObj.toString();
 
-		Object nameObj = map.get("name");
-		if(nameObj != null)
-			name = nameObj.toString();
-
 		Object degreeObj = map.get("degree");
 		if(degreeObj != null)
 			degree = degreeObj.toString();
@@ -360,6 +356,10 @@ import com.flightBooking.service.*;
 		Object remarksObj = map.get("remarks");
 		if(remarksObj != null)
 			remarks = remarksObj.toString();
+
+		Object usernameObj = map.get("username");
+		if(usernameObj != null)
+			username = usernameObj.toString();
 
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
@@ -581,28 +581,6 @@ import com.flightBooking.service.*;
 		return rollnumber != null;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getNameEx() {
-		return name != null ? name : "";
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void unSetName() {
-		this.name = null;
-	}
-
-	public boolean validateName(boolean add) throws ApplicationException {
-		if(add && name == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[name]");
-		return name != null;
-	}
-
 	public String getDegree() {
 		return degree;
 	}
@@ -679,6 +657,28 @@ import com.flightBooking.service.*;
 
 	public void unSetRemarks() {
 		this.remarks = null;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getUsernameEx() {
+		return username != null ? username : "";
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void unSetUsername() {
+		this.username = null;
+	}
+
+	public boolean validateUsername(boolean add) throws ApplicationException {
+		if(add && username == null)
+			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[username]");
+		return username != null;
 	}
 
 	public Map<String, Object> getExtra_data() {
