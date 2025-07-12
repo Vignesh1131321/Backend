@@ -8,6 +8,7 @@ public class Registry {
 				 HelperManager.getInstance().register(AllotmentHelper.getInstance());
 				 HelperManager.getInstance().register(CourseeHelper.getInstance());
 				 HelperManager.getInstance().register(HostelHelper.getInstance());
+				 HelperManager.getInstance().register(ImageHelper.getInstance());
 				 HelperManager.getInstance().register(OccupancyHelper.getInstance());
 				 HelperManager.getInstance().register(ResidentHelper.getInstance());
 				 HelperManager.getInstance().register(RoomHelper.getInstance());
@@ -16,6 +17,7 @@ public class Registry {
 				 ServiceManager.getInstance().register(new AllotmentService());
 				 ServiceManager.getInstance().register(new CourseeService());
 				 ServiceManager.getInstance().register(new HostelService());
+				 ServiceManager.getInstance().register(new ImageService());
 				 ServiceManager.getInstance().register(new OccupancyService());
 				 ServiceManager.getInstance().register(new ResidentService());
 				 ServiceManager.getInstance().register(new RoomService());

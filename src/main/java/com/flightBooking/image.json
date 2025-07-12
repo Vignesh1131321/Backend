@@ -1,0 +1,35 @@
+{
+
+"image": {
+
+  "cluster" : "traveler_db",
+  "ui" : false,
+  "api" : true,
+  "fields" : {
+    "id": {
+
+     "name" : "id",
+     "required" : "true",
+     "type" : "String"
+     },
+    "imagestring": {
+
+     "name" : "imagestring",
+     "required" : "false",
+     "type" : "String"
+     },
+    "rollnumber": {
+
+     "name" : "rollnumber",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
+     }
+   
+  }
+ }
+
+}
+

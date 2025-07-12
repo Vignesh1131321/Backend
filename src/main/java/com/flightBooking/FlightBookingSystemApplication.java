@@ -17,12 +17,10 @@ public class FlightBookingSystemApplication {
     public static void main(String[] args) {
         Registry.register();
 
-
-        HelperManager.getInstance().register(RoleHelper.getInstance());
         DecoratorManager.getInstance().register("student",new StudentDecorator());
         DecoratorManager.getInstance().register("room",new RoomDecorator());
+        HelperManager.getInstance().register(RoleHelper.getInstance());
         SpringApplication.run(FlightBookingSystemApplication.class, args);
-
 
     }
 

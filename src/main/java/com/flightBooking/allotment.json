@@ -12,15 +12,6 @@
      "required" : "true",
      "type" : "String"
      },
-    "studentname": {
-
-     "name" : "studentname",
-     "required" : "true",
-     "foreign" : {
-      "resource" :"Student" 
-      },
-     "type" : "String"
-     },
     "degree": {
 
      "name" : "degree",
@@ -101,6 +92,15 @@
      "name" : "isshift",
      "required" : "false",
      "type" : "Boolean"
+     },
+    "studentname": {
+
+     "name" : "studentname",
+     "required" : "true",
+     "foreign" : {
+      "resource" :"Student" 
+      },
+     "type" : "String"
      }
    
   }

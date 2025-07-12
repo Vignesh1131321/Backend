@@ -25,7 +25,7 @@ import com.flightBooking.service.*;
  * 
  */
 @Component
- public class Allotment extends BaseResource {
+ public class Image extends BaseResource {
 	private String id = null;
 	private String g_created_by_id = null;
 	private String g_created_by_name = null;
@@ -37,18 +37,8 @@ import com.flightBooking.service.*;
 	private String g_status = null;
 	private String archived = null;
 	private Long archived_time = null;
-	private String degree = null;
-	private String email = null;
-	private Long mobile = null;
+	private String imagestring = null;
 	private String rollnumber = null;
-	private String roomnumber = null;
-	private String checkindnt = null;
-	private String checkoutdnt = null;
-	private String remarks = null;
-	private String newroomnumber = null;
-	private String oldroomnumber = null;
-	private Boolean isshift = null;
-	private String studentname = null;
 	private Map<String, Object> extra_data = null;
 
 	public static String FIELD_ID = "id";
@@ -62,22 +52,12 @@ import com.flightBooking.service.*;
 	public static String FIELD_G_STATUS = "g_status";
 	public static String FIELD_ARCHIVED = "archived";
 	public static String FIELD_ARCHIVED_TIME = "archived_time";
-	public static String FIELD_DEGREE = "degree";
-	public static String FIELD_EMAIL = "email";
-	public static String FIELD_MOBILE = "mobile";
+	public static String FIELD_IMAGESTRING = "imagestring";
 	public static String FIELD_ROLLNUMBER = "rollnumber";
-	public static String FIELD_ROOMNUMBER = "roomnumber";
-	public static String FIELD_CHECKINDNT = "checkindnt";
-	public static String FIELD_CHECKOUTDNT = "checkoutdnt";
-	public static String FIELD_REMARKS = "remarks";
-	public static String FIELD_NEWROOMNUMBER = "newroomnumber";
-	public static String FIELD_OLDROOMNUMBER = "oldroomnumber";
-	public static String FIELD_ISSHIFT = "isshift";
-	public static String FIELD_STUDENTNAME = "studentname";
 	public static String FIELD_EXTRA_DATA = "extra_data";
 
 	private static final long serialVersionUID = 1L;
-	public final static ResourceMetaData metaData = new ResourceMetaData("allotment");
+	public final static ResourceMetaData metaData = new ResourceMetaData("image");
 
 	static {
 		metaData.setCheckBeforeAdd(false);
@@ -129,69 +109,28 @@ import com.flightBooking.service.*;
 		Field archived_timeField = new Field("archived_time", "long");
 		metaData.addField(archived_timeField);
 
-		Field degreeField = new Field("degree", "String");
-		degreeField.setRequired(true);
-		degreeField.setForeign(new Foreign("Student"));
-		metaData.addField(degreeField);
-
-		Field emailField = new Field("email", "String");
-		emailField.setRequired(true);
-		emailField.setForeign(new Foreign("Student"));
-		metaData.addField(emailField);
-
-		Field mobileField = new Field("mobile", "Long");
-		mobileField.setRequired(true);
-		mobileField.setForeign(new Foreign("Student"));
-		metaData.addField(mobileField);
+		Field imagestringField = new Field("imagestring", "String");
+		metaData.addField(imagestringField);
 
 		Field rollnumberField = new Field("rollnumber", "String");
 		rollnumberField.setRequired(true);
 		rollnumberField.setForeign(new Foreign("Student"));
 		metaData.addField(rollnumberField);
 
-		Field roomnumberField = new Field("roomnumber", "String");
-		roomnumberField.setRequired(true);
-		roomnumberField.setForeign(new Foreign("Room"));
-		metaData.addField(roomnumberField);
-
-		Field checkindntField = new Field("checkindnt", "String");
-		checkindntField.setRequired(true);
-		metaData.addField(checkindntField);
-
-		Field checkoutdntField = new Field("checkoutdnt", "String");
-		metaData.addField(checkoutdntField);
-
-		Field remarksField = new Field("remarks", "String");
-		metaData.addField(remarksField);
-
-		Field newroomnumberField = new Field("newroomnumber", "String");
-		metaData.addField(newroomnumberField);
-
-		Field oldroomnumberField = new Field("oldroomnumber", "String");
-		metaData.addField(oldroomnumberField);
-
-		Field isshiftField = new Field("isshift", "Boolean");
-		metaData.addField(isshiftField);
-
-		Field studentnameField = new Field("studentname", "String");
-		studentnameField.setRequired(true);
-		studentnameField.setForeign(new Foreign("Student"));
-		metaData.addField(studentnameField);
-
 		Field extra_dataField = new Field("extra_data", "Map");
 		extra_dataField.setValueType("Object");
 		metaData.addField(extra_dataField);
 
 
-		metaData.setTableName("allotment");
+		metaData.setTableName("image");
 
 		metaData.setCluster("traveler_db");
 	}
 
-	public Allotment() {this.setId(Util.getUniqueId());}
-	public Allotment(String id) {this.setId(id);}
+	public Image() {this.setId(Util.getUniqueId());}
+	public Image(String id) {this.setId(id);}
 
-	public Allotment(Allotment obj) {
+	public Image(Image obj) {
 		this.id = obj.id;
 		this.g_created_by_id = obj.g_created_by_id;
 		this.g_created_by_name = obj.g_created_by_name;
@@ -203,18 +142,8 @@ import com.flightBooking.service.*;
 		this.g_status = obj.g_status;
 		this.archived = obj.archived;
 		this.archived_time = obj.archived_time;
-		this.degree = obj.degree;
-		this.email = obj.email;
-		this.mobile = obj.mobile;
+		this.imagestring = obj.imagestring;
 		this.rollnumber = obj.rollnumber;
-		this.roomnumber = obj.roomnumber;
-		this.checkindnt = obj.checkindnt;
-		this.checkoutdnt = obj.checkoutdnt;
-		this.remarks = obj.remarks;
-		this.newroomnumber = obj.newroomnumber;
-		this.oldroomnumber = obj.oldroomnumber;
-		this.isshift = obj.isshift;
-		this.studentname = obj.studentname;
 		this.extra_data = obj.extra_data;
 	}
 
@@ -252,30 +181,10 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
-		if(degree != null)
-			map.put("degree", degree);
-		if(email != null)
-			map.put("email", email);
-		if(mobile != null)
-			map.put("mobile", mobile);
+		if(imagestring != null)
+			map.put("imagestring", imagestring);
 		if(rollnumber != null)
 			map.put("rollnumber", rollnumber);
-		if(roomnumber != null)
-			map.put("roomnumber", roomnumber);
-		if(checkindnt != null)
-			map.put("checkindnt", checkindnt);
-		if(checkoutdnt != null)
-			map.put("checkoutdnt", checkoutdnt);
-		if(remarks != null)
-			map.put("remarks", remarks);
-		if(newroomnumber != null)
-			map.put("newroomnumber", newroomnumber);
-		if(oldroomnumber != null)
-			map.put("oldroomnumber", oldroomnumber);
-		if(isshift != null)
-			map.put("isshift", isshift);
-		if(studentname != null)
-			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -304,30 +213,10 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
-		if(validateDegree(add))
-			map.put("degree", degree);
-		if(validateEmail(add))
-			map.put("email", email);
-		if(validateMobile(add))
-			map.put("mobile", mobile);
+		if(imagestring != null)
+			map.put("imagestring", imagestring);
 		if(validateRollnumber(add))
 			map.put("rollnumber", rollnumber);
-		if(validateRoomnumber(add))
-			map.put("roomnumber", roomnumber);
-		if(validateCheckindnt(add))
-			map.put("checkindnt", checkindnt);
-		if(checkoutdnt != null)
-			map.put("checkoutdnt", checkoutdnt);
-		if(remarks != null)
-			map.put("remarks", remarks);
-		if(newroomnumber != null)
-			map.put("newroomnumber", newroomnumber);
-		if(oldroomnumber != null)
-			map.put("oldroomnumber", oldroomnumber);
-		if(isshift != null)
-			map.put("isshift", isshift);
-		if(validateStudentname(add))
-			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -350,18 +239,8 @@ import com.flightBooking.service.*;
 		g_status = (String) map.get("g_status");
 		archived = (String) map.get("archived");
 		archived_time = (map.get("archived_time") == null ? null : ((Number) map.get("archived_time")).longValue());
-		degree = (String) map.get("degree");
-		email = (String) map.get("email");
-		mobile = (map.get("mobile") == null ? null : ((Number) map.get("mobile")).longValue());
+		imagestring = (String) map.get("imagestring");
 		rollnumber = (String) map.get("rollnumber");
-		roomnumber = (String) map.get("roomnumber");
-		checkindnt = (String) map.get("checkindnt");
-		checkoutdnt = (String) map.get("checkoutdnt");
-		remarks = (String) map.get("remarks");
-		newroomnumber = (String) map.get("newroomnumber");
-		oldroomnumber = (String) map.get("oldroomnumber");
-		isshift = (Boolean) map.get("isshift");
-		studentname = (String) map.get("studentname");
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
 
@@ -411,53 +290,13 @@ import com.flightBooking.service.*;
 		if(archived_timeObj != null)
 			archived_time = new Long(archived_timeObj.toString());
 
-		Object degreeObj = map.get("degree");
-		if(degreeObj != null)
-			degree = degreeObj.toString();
-
-		Object emailObj = map.get("email");
-		if(emailObj != null)
-			email = emailObj.toString();
-
-		Object mobileObj = map.get("mobile");
-		if(mobileObj != null)
-			mobile = new Long(mobileObj.toString());
+		Object imagestringObj = map.get("imagestring");
+		if(imagestringObj != null)
+			imagestring = imagestringObj.toString();
 
 		Object rollnumberObj = map.get("rollnumber");
 		if(rollnumberObj != null)
 			rollnumber = rollnumberObj.toString();
-
-		Object roomnumberObj = map.get("roomnumber");
-		if(roomnumberObj != null)
-			roomnumber = roomnumberObj.toString();
-
-		Object checkindntObj = map.get("checkindnt");
-		if(checkindntObj != null)
-			checkindnt = checkindntObj.toString();
-
-		Object checkoutdntObj = map.get("checkoutdnt");
-		if(checkoutdntObj != null)
-			checkoutdnt = checkoutdntObj.toString();
-
-		Object remarksObj = map.get("remarks");
-		if(remarksObj != null)
-			remarks = remarksObj.toString();
-
-		Object newroomnumberObj = map.get("newroomnumber");
-		if(newroomnumberObj != null)
-			newroomnumber = newroomnumberObj.toString();
-
-		Object oldroomnumberObj = map.get("oldroomnumber");
-		if(oldroomnumberObj != null)
-			oldroomnumber = oldroomnumberObj.toString();
-
-		Object isshiftObj = map.get("isshift");
-		if(isshiftObj != null)
-			isshift = new Boolean(isshiftObj.toString());
-
-		Object studentnameObj = map.get("studentname");
-		if(studentnameObj != null)
-			studentname = studentnameObj.toString();
 
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
@@ -657,66 +496,20 @@ import com.flightBooking.service.*;
 		this.archived_time = null;
 	}
 
-	public String getDegree() {
-		return degree;
+	public String getImagestring() {
+		return imagestring;
 	}
 
-	public String getDegreeEx() {
-		return degree != null ? degree : "";
+	public String getImagestringEx() {
+		return imagestring != null ? imagestring : "";
 	}
 
-	public void setDegree(String degree) {
-		this.degree = degree;
+	public void setImagestring(String imagestring) {
+		this.imagestring = imagestring;
 	}
 
-	public void unSetDegree() {
-		this.degree = null;
-	}
-
-	public boolean validateDegree(boolean add) throws ApplicationException {
-		if(add && degree == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[degree]");
-		return degree != null;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getEmailEx() {
-		return email != null ? email : "";
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void unSetEmail() {
-		this.email = null;
-	}
-
-	public boolean validateEmail(boolean add) throws ApplicationException {
-		if(add && email == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[email]");
-		return email != null;
-	}
-
-	public Long getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(Long mobile) {
-		this.mobile = mobile;
-	}
-
-	public void unSetMobile() {
-		this.mobile = null;
-	}
-
-	public boolean validateMobile(boolean add) throws ApplicationException {
-		if(add && mobile == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[mobile]");
-		return mobile != null;
+	public void unSetImagestring() {
+		this.imagestring = null;
 	}
 
 	public String getRollnumber() {
@@ -739,148 +532,6 @@ import com.flightBooking.service.*;
 		if(add && rollnumber == null)
 			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[rollnumber]");
 		return rollnumber != null;
-	}
-
-	public String getRoomnumber() {
-		return roomnumber;
-	}
-
-	public String getRoomnumberEx() {
-		return roomnumber != null ? roomnumber : "";
-	}
-
-	public void setRoomnumber(String roomnumber) {
-		this.roomnumber = roomnumber;
-	}
-
-	public void unSetRoomnumber() {
-		this.roomnumber = null;
-	}
-
-	public boolean validateRoomnumber(boolean add) throws ApplicationException {
-		if(add && roomnumber == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[roomnumber]");
-		return roomnumber != null;
-	}
-
-	public String getCheckindnt() {
-		return checkindnt;
-	}
-
-	public String getCheckindntEx() {
-		return checkindnt != null ? checkindnt : "";
-	}
-
-	public void setCheckindnt(String checkindnt) {
-		this.checkindnt = checkindnt;
-	}
-
-	public void unSetCheckindnt() {
-		this.checkindnt = null;
-	}
-
-	public boolean validateCheckindnt(boolean add) throws ApplicationException {
-		if(add && checkindnt == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[checkindnt]");
-		return checkindnt != null;
-	}
-
-	public String getCheckoutdnt() {
-		return checkoutdnt;
-	}
-
-	public String getCheckoutdntEx() {
-		return checkoutdnt != null ? checkoutdnt : "";
-	}
-
-	public void setCheckoutdnt(String checkoutdnt) {
-		this.checkoutdnt = checkoutdnt;
-	}
-
-	public void unSetCheckoutdnt() {
-		this.checkoutdnt = null;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public String getRemarksEx() {
-		return remarks != null ? remarks : "";
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-
-	public void unSetRemarks() {
-		this.remarks = null;
-	}
-
-	public String getNewroomnumber() {
-		return newroomnumber;
-	}
-
-	public String getNewroomnumberEx() {
-		return newroomnumber != null ? newroomnumber : "";
-	}
-
-	public void setNewroomnumber(String newroomnumber) {
-		this.newroomnumber = newroomnumber;
-	}
-
-	public void unSetNewroomnumber() {
-		this.newroomnumber = null;
-	}
-
-	public String getOldroomnumber() {
-		return oldroomnumber;
-	}
-
-	public String getOldroomnumberEx() {
-		return oldroomnumber != null ? oldroomnumber : "";
-	}
-
-	public void setOldroomnumber(String oldroomnumber) {
-		this.oldroomnumber = oldroomnumber;
-	}
-
-	public void unSetOldroomnumber() {
-		this.oldroomnumber = null;
-	}
-
-	public Boolean getIsshift() {
-		return isshift;
-	}
-
-	public void setIsshift(Boolean isshift) {
-		this.isshift = isshift;
-	}
-
-	public void unSetIsshift() {
-		this.isshift = null;
-	}
-
-	public String getStudentname() {
-		return studentname;
-	}
-
-	public String getStudentnameEx() {
-		return studentname != null ? studentname : "";
-	}
-
-	public void setStudentname(String studentname) {
-		this.studentname = studentname;
-	}
-
-	public void unSetStudentname() {
-		this.studentname = null;
-	}
-
-	public boolean validateStudentname(boolean add) throws ApplicationException {
-		if(add && studentname == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[studentname]");
-		return studentname != null;
 	}
 
 	public Map<String, Object> getExtra_data() {
@@ -910,8 +561,8 @@ import com.flightBooking.service.*;
 	public String getClusterType() {
 		return "REPLICATED";
 	}
-	public  Class<?> getResultClass() {return AllotmentResult.class;};
-	public  Class<?> getMessageClass() {return AllotmentMessage.class;};
-	public  Class<?> getHelperClass() {return AllotmentHelper.class;};
-	public  Class<?> getServiceClass() {return AllotmentService.class;};
+	public  Class<?> getResultClass() {return ImageResult.class;};
+	public  Class<?> getMessageClass() {return ImageMessage.class;};
+	public  Class<?> getHelperClass() {return ImageHelper.class;};
+	public  Class<?> getServiceClass() {return ImageService.class;};
 }
