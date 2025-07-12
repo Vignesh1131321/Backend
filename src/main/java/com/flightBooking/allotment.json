@@ -12,31 +12,28 @@
      "required" : "true",
      "type" : "String"
      },
+    "studentname": {
+
+     "name" : "studentname",
+     "required" : "true",
+     "type" : "String"
+     },
     "degree": {
 
      "name" : "degree",
      "required" : "true",
-     "foreign" : {
-      "resource" :"Student" 
-      },
      "type" : "String"
      },
     "email": {
 
      "name" : "email",
      "required" : "true",
-     "foreign" : {
-      "resource" :"Student" 
-      },
      "type" : "String"
      },
     "mobile": {
 
      "name" : "mobile",
      "required" : "true",
-     "foreign" : {
-      "resource" :"Student" 
-      },
      "type" : "Long"
      },
     "rollnumber": {
@@ -92,15 +89,6 @@
      "name" : "isshift",
      "required" : "false",
      "type" : "Boolean"
-     },
-    "studentname": {
-
-     "name" : "studentname",
-     "required" : "true",
-     "foreign" : {
-      "resource" :"Student" 
-      },
-     "type" : "String"
      }
    
   }

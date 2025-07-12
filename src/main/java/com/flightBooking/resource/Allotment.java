@@ -37,6 +37,7 @@ import com.flightBooking.service.*;
 	private String g_status = null;
 	private String archived = null;
 	private Long archived_time = null;
+	private String studentname = null;
 	private String degree = null;
 	private String email = null;
 	private Long mobile = null;
@@ -48,7 +49,6 @@ import com.flightBooking.service.*;
 	private String newroomnumber = null;
 	private String oldroomnumber = null;
 	private Boolean isshift = null;
-	private String studentname = null;
 	private Map<String, Object> extra_data = null;
 
 	public static String FIELD_ID = "id";
@@ -62,6 +62,7 @@ import com.flightBooking.service.*;
 	public static String FIELD_G_STATUS = "g_status";
 	public static String FIELD_ARCHIVED = "archived";
 	public static String FIELD_ARCHIVED_TIME = "archived_time";
+	public static String FIELD_STUDENTNAME = "studentname";
 	public static String FIELD_DEGREE = "degree";
 	public static String FIELD_EMAIL = "email";
 	public static String FIELD_MOBILE = "mobile";
@@ -73,7 +74,6 @@ import com.flightBooking.service.*;
 	public static String FIELD_NEWROOMNUMBER = "newroomnumber";
 	public static String FIELD_OLDROOMNUMBER = "oldroomnumber";
 	public static String FIELD_ISSHIFT = "isshift";
-	public static String FIELD_STUDENTNAME = "studentname";
 	public static String FIELD_EXTRA_DATA = "extra_data";
 
 	private static final long serialVersionUID = 1L;
@@ -129,19 +129,20 @@ import com.flightBooking.service.*;
 		Field archived_timeField = new Field("archived_time", "long");
 		metaData.addField(archived_timeField);
 
+		Field studentnameField = new Field("studentname", "String");
+		studentnameField.setRequired(true);
+		metaData.addField(studentnameField);
+
 		Field degreeField = new Field("degree", "String");
 		degreeField.setRequired(true);
-		degreeField.setForeign(new Foreign("Student"));
 		metaData.addField(degreeField);
 
 		Field emailField = new Field("email", "String");
 		emailField.setRequired(true);
-		emailField.setForeign(new Foreign("Student"));
 		metaData.addField(emailField);
 
 		Field mobileField = new Field("mobile", "Long");
 		mobileField.setRequired(true);
-		mobileField.setForeign(new Foreign("Student"));
 		metaData.addField(mobileField);
 
 		Field rollnumberField = new Field("rollnumber", "String");
@@ -173,11 +174,6 @@ import com.flightBooking.service.*;
 		Field isshiftField = new Field("isshift", "Boolean");
 		metaData.addField(isshiftField);
 
-		Field studentnameField = new Field("studentname", "String");
-		studentnameField.setRequired(true);
-		studentnameField.setForeign(new Foreign("Student"));
-		metaData.addField(studentnameField);
-
 		Field extra_dataField = new Field("extra_data", "Map");
 		extra_dataField.setValueType("Object");
 		metaData.addField(extra_dataField);
@@ -203,6 +199,7 @@ import com.flightBooking.service.*;
 		this.g_status = obj.g_status;
 		this.archived = obj.archived;
 		this.archived_time = obj.archived_time;
+		this.studentname = obj.studentname;
 		this.degree = obj.degree;
 		this.email = obj.email;
 		this.mobile = obj.mobile;
@@ -214,7 +211,6 @@ import com.flightBooking.service.*;
 		this.newroomnumber = obj.newroomnumber;
 		this.oldroomnumber = obj.oldroomnumber;
 		this.isshift = obj.isshift;
-		this.studentname = obj.studentname;
 		this.extra_data = obj.extra_data;
 	}
 
@@ -252,6 +248,8 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
+		if(studentname != null)
+			map.put("studentname", studentname);
 		if(degree != null)
 			map.put("degree", degree);
 		if(email != null)
@@ -274,8 +272,6 @@ import com.flightBooking.service.*;
 			map.put("oldroomnumber", oldroomnumber);
 		if(isshift != null)
 			map.put("isshift", isshift);
-		if(studentname != null)
-			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -304,6 +300,8 @@ import com.flightBooking.service.*;
 			map.put("archived", archived);
 		if(archived_time != null)
 			map.put("archived_time", archived_time);
+		if(validateStudentname(add))
+			map.put("studentname", studentname);
 		if(validateDegree(add))
 			map.put("degree", degree);
 		if(validateEmail(add))
@@ -326,8 +324,6 @@ import com.flightBooking.service.*;
 			map.put("oldroomnumber", oldroomnumber);
 		if(isshift != null)
 			map.put("isshift", isshift);
-		if(validateStudentname(add))
-			map.put("studentname", studentname);
 		if(extra_data != null)
 			map.put("extra_data", extra_data);
 		return map;
@@ -350,6 +346,7 @@ import com.flightBooking.service.*;
 		g_status = (String) map.get("g_status");
 		archived = (String) map.get("archived");
 		archived_time = (map.get("archived_time") == null ? null : ((Number) map.get("archived_time")).longValue());
+		studentname = (String) map.get("studentname");
 		degree = (String) map.get("degree");
 		email = (String) map.get("email");
 		mobile = (map.get("mobile") == null ? null : ((Number) map.get("mobile")).longValue());
@@ -361,7 +358,6 @@ import com.flightBooking.service.*;
 		newroomnumber = (String) map.get("newroomnumber");
 		oldroomnumber = (String) map.get("oldroomnumber");
 		isshift = (Boolean) map.get("isshift");
-		studentname = (String) map.get("studentname");
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
 
@@ -411,6 +407,10 @@ import com.flightBooking.service.*;
 		if(archived_timeObj != null)
 			archived_time = new Long(archived_timeObj.toString());
 
+		Object studentnameObj = map.get("studentname");
+		if(studentnameObj != null)
+			studentname = studentnameObj.toString();
+
 		Object degreeObj = map.get("degree");
 		if(degreeObj != null)
 			degree = degreeObj.toString();
@@ -454,10 +454,6 @@ import com.flightBooking.service.*;
 		Object isshiftObj = map.get("isshift");
 		if(isshiftObj != null)
 			isshift = new Boolean(isshiftObj.toString());
-
-		Object studentnameObj = map.get("studentname");
-		if(studentnameObj != null)
-			studentname = studentnameObj.toString();
 
 		extra_data = (Map<String, Object>) map.get("extra_data");
 	}
@@ -655,6 +651,28 @@ import com.flightBooking.service.*;
 
 	public void unSetArchived_time() {
 		this.archived_time = null;
+	}
+
+	public String getStudentname() {
+		return studentname;
+	}
+
+	public String getStudentnameEx() {
+		return studentname != null ? studentname : "";
+	}
+
+	public void setStudentname(String studentname) {
+		this.studentname = studentname;
+	}
+
+	public void unSetStudentname() {
+		this.studentname = null;
+	}
+
+	public boolean validateStudentname(boolean add) throws ApplicationException {
+		if(add && studentname == null)
+			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[studentname]");
+		return studentname != null;
 	}
 
 	public String getDegree() {
@@ -859,28 +877,6 @@ import com.flightBooking.service.*;
 
 	public void unSetIsshift() {
 		this.isshift = null;
-	}
-
-	public String getStudentname() {
-		return studentname;
-	}
-
-	public String getStudentnameEx() {
-		return studentname != null ? studentname : "";
-	}
-
-	public void setStudentname(String studentname) {
-		this.studentname = studentname;
-	}
-
-	public void unSetStudentname() {
-		this.studentname = null;
-	}
-
-	public boolean validateStudentname(boolean add) throws ApplicationException {
-		if(add && studentname == null)
-			throw new ApplicationException(ExceptionSeverity.ERROR, "Requierd validation Failed[studentname]");
-		return studentname != null;
 	}
 
 	public Map<String, Object> getExtra_data() {

@@ -76,6 +76,7 @@ public class BaseController {
                @RequestParam(value = "search", required = false) String search,
                @RequestParam(value="args", required=false) String args) {
         result result = new result();
+        /*System.out.println(args);*/
         try {
             if (Util.isEmpty(sessionId)) {
                 sessionId = session_id;
